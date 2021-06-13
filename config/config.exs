@@ -2,6 +2,13 @@ import Config
 
 config :plug_logger_json,
   filtered_keys: [],
-  suppressed_keys: ["api_version", "log_type"]
+  suppressed_keys: ["api_version"]
 
-import_config "#{Mix.env()}.exs"
+config :logger,
+  utc_log: true,
+  level: :warn,
+  backends: [{LoggerFileBackend, :access}]
+
+config :logger, :access, path: "./logs/access.log"
+
+import_config("#{Mix.env()}.exs")

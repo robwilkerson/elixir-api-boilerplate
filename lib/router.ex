@@ -9,7 +9,7 @@ defmodule Router do
   plug(Plug.LoggerJSON, log: :info)
   plug(:match)
   # middleware?
-  plug(Plug.Parsers, parsers: [:json], json_decoder: Jason)
+  plug(Plug.Parsers, parsers: [:urlencoded, :multipart, :json], json_decoder: Jason)
   plug(:dispatch)
 
   # Non-domain bits here: health check, etc.

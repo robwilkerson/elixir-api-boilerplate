@@ -6,6 +6,11 @@ defmodule Routes.Users do
   @database [%{"id" => 1, "title" => "Hello"}, %{"id" => 2, "title" => "world!"}]
 
   get "/" do
+    Logger.debug("Sending a debug message!")
+    Logger.info("Sending info!")
+    Logger.warn("Sending a warning!")
+    Logger.error("Sending an error!")
+
     send(conn, :ok, @database)
   end
 

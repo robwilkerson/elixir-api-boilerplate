@@ -21,6 +21,7 @@ defmodule Api.Application do
     opts = [strategy: :one_for_one, name: Api.Supervisor]
 
     Logger.info("Starting the #{Mix.env()} server on port #{port()}")
+    Logger.info("Logging at LogLevel #{Logger.level()}")
     Supervisor.start_link(children, opts)
   end
 

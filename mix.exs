@@ -14,7 +14,7 @@ defmodule Api.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :poison],
+      extra_applications: [:plug_logger_json, :poison],
       mod: {Api.Application, []}
     ]
   end
@@ -24,7 +24,8 @@ defmodule Api.MixProject do
     [
       {:plug_cowboy, "~> 2.5"},
       {:jason, "~> 1.2"},
-      {:plug_logger_json, "~> 0.7.0"}
+      {:plug_logger_json, "~> 0.7.0"},
+      {:logger_file_backend, "~> 0.0.11"}
     ]
   end
 end
