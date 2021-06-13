@@ -20,7 +20,7 @@ defmodule Api.Application do
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Api.Supervisor]
 
-    Logger.info("The server listening on port #{port()}")
+    Logger.info("Starting the server on port #{port()}")
     Supervisor.start_link(children, opts)
   end
 

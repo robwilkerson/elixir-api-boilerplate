@@ -1,14 +1,18 @@
 defmodule Router do
-  import Plug.Conn
+  use Plug.Router
 
-  def init(options) do
-    # initialize options
-    options
-  end
+  require Logger
 
-  def call(conn, _opts) do
-    conn
-    |> put_resp_content_type("text/plain")
-    |> send_resp(200, "Hello world")
+  plug(Plug.Logger, log: :info)
+
+  plug(:match)
+  plug(Plug.Parsers, parsers: [:json], json_decoder: Jason)
+  plug(:dispatch)
+
+  forward("/users", to: Routes.Users)
+
+  match _ do
+    Logger.warn("#{conn.request_path} not found")
+    send_resp(conn, 404, "Not found!")
   end
 end
