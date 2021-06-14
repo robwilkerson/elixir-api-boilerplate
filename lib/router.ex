@@ -3,10 +3,8 @@ defmodule Router do
 
   require Logger
 
-  # config(:logger, backends: [:console])
-
   plug(Plug.RequestId, http_header: "x-request-id")
-  plug(Plug.LoggerJSON, log: :info)
+  plug(LoggerJSON.Plug, metadata_formatter: LoggerJSON.Plug.MetadataFormatters.ELK)
   plug(:match)
   # middleware?
   plug(Plug.Parsers, parsers: [:urlencoded, :multipart, :json], json_decoder: Jason)

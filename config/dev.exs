@@ -4,8 +4,7 @@ import Config
 config :api, port: 8080
 
 config :logger,
-  level: :info,
-  backends: [{LoggerFileBackend, :access}, :console]
+  level: :info
 
 # Example of database configuration
 # config :api, db_config: %{name: "dev_db", password: "", port: 10000}
